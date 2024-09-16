@@ -3,9 +3,134 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>ThunderBlaze's Portfolio</title>
+	<link rel="stylesheet" type="text/css" href="CSS/main.css">
+	<!-- <link rel="stylesheet" href="./Assets/highlight/styles/tokyo-night-dark.min.css"> -->
+	<!-- <link rel="stylesheet" href="./Assets/highlight/styles/arta.css"> -->
+	<!-- <link rel="stylesheet" href="./Assets/highlight/styles/base16/bright.css"> -->
+	<link rel="stylesheet" href="./Assets/highlight/styles/base16/dracula.css">
+	<!-- <link rel="stylesheet" href="./Assets/highlight/styles/base16/hardcore.css"> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 </head>
 <body>
+	<nav class="nav-bar">
+		<img class="nav-logo" src="Assets/Thunderblaze-Logo-Text.svg">
+		<div class="nav-links">
+			<a href="#" class="nav-link">Home</a>
+			<a href="#" class="nav-link">Contact</a>
+			<a href="#" class="nav-link">Projects</a>
+		</div>
+	</nav>
+	<section>
+		<img src="src/1304014.jpg" alt="" width="100%">
+	</section>
+	<section>
+		<h1 class="section-heading">Buttons</h1>
+		<div class="flex-row">
+			<button class="button-type-1">Let's Go</button>
+			<button class="button-type-2">Hello</button>
+			<button class="button-type-3">Noice</button>
+			<button class="button-type-4">Anime</button>
+		</div>
+	</section>
+	<section>
+		<h1 class="section-heading">Tabs</h1>
+		<div class="flex-row">
+			<div class="code-window">
+				<div class="tab-strip">
+					<button class="tab-type-1">CSS</button>
+					<button class="tab-type-1">HTML</button>
+					<button class="tab-type-1 active">JavaScript</button>
+				</div>
+				<hr>
+				<pre><code class="js"><meta author="Joe Example">function navbar() {
+  document.querySelector('.menu').classList.toggle('active')
+  document.querySelector('.nav-wrap').classList.toggle('active')
+}
 
+document.addEventListener('scroll', () => {
+  const nav = document.querySelector(".nav");
+
+  if (window.scrollY > 100) {
+    nav.classList.remove('transparent');
+  } else {
+    nav.classList.add('transparent');
+  }
+});</code></pre>
+			</div>
+		</div>
+	</section>
+	<section>
+		<h1 class="section-heading">Links</h1>
+		<div class="flex-row">
+			Hello, <a href="#" class="link-type-1">Let's Go</a>
+			<a href="#" class="link-type-2">Damn</a>
+			<a href=""></a>
+		</div>
+	</section>
+	<section class="moodboard">
+		<div class="logo">
+			<!-- <img src="https://images.unsplash.com/photo-1604922824961-87cefb2e4b07?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8MSUzQTF8ZW58MHx8MHx8fDA%3D" width="100%"><img src="https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" width="100%"> -->
+		</div>
+		<div class="circle-logo"><img src="./Assets/Logo.png" alt="" width="80%" align="center"></div>
+		<div class="color-scheme">
+			<div>#FDFD51</div>
+			<div>#FFF70E</div>
+			<div>#287AFF</div>
+			<div>#3C52FF</div>
+			<div>#5029FF</div>
+			<div>#6400FF</div>
+		</div>
+		<div class="extra"><img src="./Assets/wallpaper.jpg" height="200%" alt=""></div>
+		<div class="font">
+			<h1>Sansation</h1>
+			<p>Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>1 2 3 4 5 6 7 8 9 0</p>
+		</div>
+		<div class="slogan"></div>
+	</section>
+	<section>
+		<!-- <IFRAME SRC="https://www.mp4upload.com/embed-jhsdo0g4wg9g.html" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=960 HEIGHT=540 allowfullscreen></IFRAME>
+		<iframe width="720" height="405" src="https://www.youtube.com/embed/ZLF7qG6PEzQ" title="映画『アリスとテレスのまぼろし工場』主題歌「心音（しんおん）」中島みゆき｜MVフルver.｜maboroshi Music Video Long" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+	</section>
+	<section class="para">
+		<h1>This is the Heading</h1>
+		<p>Lorem ipsum, dolor, sit amet consectetur adipisicing elit. Maiores aut vitae necessitatibus obcaecati earum, rem, nobis quisquam molestias vel, illo perspiciatis numquam quos ipsam veritatis quae nisi alias beatae. Dicta temporibus sunt, nostrum officia debitis iusto eveniet in, quis consequatur exercitationem quaerat, velit! Delectus autem ex at nam magnam, earum.</p>
+	</section>
+	<section class="grid-1">
+		<div class="rows-1">
+			<div class="row-items-1"></div>
+			<div class="row-items-1"></div>
+		</div>
+		<div class="rows-1">
+			<div class="row-items-1"></div>
+			<div class="row-items-1"></div>
+		</div>
+	</section>
+	<section class="para">
+		<h1>Skills</h1>
+		<div class="ProgressCont">
+			<div class="ProgressBar" style="width:35%; background: #00B2FF;"></div>
+		</div>
+		<div class="ProgressCont">
+			<div class="ProgressBar" style="width:50%; background: #66FF22;"></div>
+		</div>
+		<div class="ProgressCont">
+			<div class="ProgressBar" style="width:95%; background: #DDFF00;"></div>
+		</div>
+		<div class="ProgressCont">
+			<div class="ProgressBar" style="width:10%; background: #FFF;"></div>
+		</div>
+		<div class="ProgressCont">
+			<div class="ProgressBar" style="width:100%; background: #8900FF;"></div>
+		</div>
+		<div class="ProgressCont">
+			<div class="ProgressBar" style="width:75%; background: #00B2FF;"></div>
+		</div>
+	</section>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script src="./JS/main.js"></script>
+<!-- 	<link rel="stylesheet" href="./Assets/highlight/styles/default.css">
+	<script type="text/javascript" src="./Assets/highlight/highlight.js"></script>
+	<script>hljs.highlightAll();</script> -->
 </body>
 </html>

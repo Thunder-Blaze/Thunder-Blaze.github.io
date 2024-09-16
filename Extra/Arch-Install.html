@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Arch Installation</title>
+	<style type="text/css">
+		@font-face {
+			font-family: informe;
+			src: url("../Fonts/Informe.otf");
+		}
+		@font-face {
+			font-family: Jost;
+			src: url("../Fonts/Jost-VariableFont_wght.ttf");
+		}
+		html {
+			font-size: 20px;
+			--accent: #00A8FF;
+		}
+		body {
+			margin: 0;
+			padding: 50px;
+			padding-top: 100px;
+			box-sizing: border-box;
+			font-family: Jost;
+			background: #DDDDFF;
+			color: #112;
+		}
+		header {
+			position: fixed;
+			height: 60px;
+			width: 100%;
+			top: 0;
+			left: 0;
+			background: #FFF;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0px 0px 8px #0003;
+			z-index: 99999;
+		}
+		header img {
+			height: 80%;
+		}
+		h1,h2,h3,h4,h5,h6,p,code {
+			margin: 0;
+			margin-bottom: 20px;
+		}
+		h1 {font-weight: 600; position: relative; width: max-content; margin-bottom: 30px; padding-bottom: 10px}
+		h1:after {content: ''; left: 0; bottom: 0; width: 100%; height: 3px; position: absolute; background: var(--accent); border-radius: 2px}
+		h2 {font-weight: 500}
+		a {
+			text-decoration: none;
+			color: var(--accent);
+			padding: 2px 6px;
+			position: relative;
+		}
+		a:after {content: ''; left: 0; bottom: 0; width: 100%; height: 2px; position: absolute; background: var(--accent); border-radius: 8px; transition: all 0.3s ease; z-index: -1;}
+		a:hover:after {height: 100%;}
+		a:hover {color: #FFF}
+		code {
+			width: max-content;
+			background: #112;
+			color: #DDF;
+			padding: 18px 30px;
+			margin-bottom: 20px;
+			font-size: 16px;
+			position: relative;
+			display: flex;
+			border-radius: 10px;
+			font-family: informe;
+		}
+	</style>
+</head>
+<body>
+	<header><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Archlinux-logo-standard-version.png"></header>
+	<h1>Arch Installation Steps (Advanced)</h1>
+	<p>Download Arch linux iso file from <a target="_blank" href="https://archlinux.org/">https://archlinux.org</a>
+	<br>Burn the downloaded iso into a pendrive or SD card using <a target="_blank" href="https://rufus.ie/en/">Rufus</a>
+	<br>Go into BIOS and disable Secure Boot</p>
+	<h2>Boot Into the Pendrive</h2>
+	<p>Type the following commands</p>
+	<code># setfont ter-132n</code>
+	<code># iwctl</code>
+	<code># device list</code>
+	<code># station wlan0 get-networks</code>
+	<code># station wlan0 connect WifiName</code>
+	<code>Passphrase: type the password</code>
+	<code># exit</code>
+	<code># clear</code>
+	<code># pacman -Sy</code>
+	<code># pacman -Sy archlinux-keyring</code>
+	<code># lsblk</code>
+	<code># cfdisk /dev/nvme0n1</code>
+	<p>create 800M type EFI system partition
+	<br>create 8G type Linux swap partition
+	<br>create remaining type Linux filesystem partition
+	<br>write the changes to the disk and quit</p>
+	<code># mkfs.fat -F32 /dev/efi_partition_name</code>
+	<code># mkfs.ext4 /dev/root_partition_name</code>
+	<code># mkswap /dev/swap_partition_name</code>
+	<code># mount /dev/root_partition_name /mnt</code>
+	<code># mkdir /mnt/boot</code>
+	<code># mount /dev/efi_partition_name /mnt/boot</code>
+	<code># swapon /dev/swap_partition_name</code>
+	<p>Check if they are mounted properly using lsblk command</p>
+	<code># pacstrap -i /mnt base base-devel linux linux-firmware git sudo fastfetch htop intel-ucode nano bluez bluez-utils networkmanager</code>
+	<code># genfstab -U /mnt >> /mnt /mnt/etc/fstab</code>
+	<code># cat /mnt/etc/fstab</code>
+	<code># arch-chroot /mnt</code>
+	<code># fastfetch</code>
+	<code># passwd</code>
+	<p>type the password</p>
+	<code># useradd -m -g users -G wheel,storage,power,video,audio -s /bin/bash username</code>
+	<code># passwd username</code>
+	<p>type the password</p>
+	<code># EDITOR=nano visudo</code>
+	<p>scroll and uncomment %wheel ALL=(ALL:ALL) ALL</p>
+	<p>Ctrl+O to save changes, Ctrl+X to exit</p>
+	<code># su - username</code>
+	<code># sudo pacman -Syu</code>
+	<code># exit</code>
+	<code># ln -sf /usr/share/zoneinfo/</code>
+	<code># ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime</code>
+	<code># hwclock --systohc</code>
+	<code># nano /etc/locale.gen</code>
+	<p>scroll and uncomment en_US.UTF-8 UTF-8</p>
+	<code># locale-gen</code>
+	<code># nano /etc/locale.conf</code>
+	<p>write LANG=en_US.UTF-8</p>
+	<code># nano /etc/hostname</code>
+	<p>write archlinux</p>
+	<code># nano /etc/hosts</code>
+	<p>type the following after 2 line gap <br><br>
+	<img src="https://files.catbox.moe/ry9myl.png"></p>
+	<code># pacman -S grub efibootmgr dosfstools mtools</code>
+	<code># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</code>
+	<code># grub-mkconfig -o /boot/grub/grub.cfg</code>
+	<code># systemctl enable bluetooth</code>
+	<code># systemctl enable NetworkManager</code>
+	<code># exit</code>
+	<code># umount -lR /mnt</code>
+	<code># shutdown now</code>
+	<p>Now Remove the USB drive and start the PC
+	<br>Boot into Arch Linux and then login with your username</p>
+	<code># setfont -d</code>
+	<code># nmcli dev status</code>
+	<code># nmcli radio wifi on</code>
+	<code># nmcli dev wifi list</code>
+	<code># sudo nmcli dev wifi connect WifiName password "WifiPass"</code>
+	<code># sudo pacman -Sy</code>
+	<code># sudo pacman -Syu</code>
+	<code># sudo pacman -Sy flatpak</code>
+	<code># sudo pacman -S hyprland dunst kitty xdg-desktop-portal-hyprland qt5-wayland qt6-wayland pipewire thunar vlc clang cargo firefox noto-fonts noto-fonts-emoji ttf-dejavu ttf-font-awesome hyprlang hyprcursor dunst polkit-kde-agent wireplumber libinput sddm</code>
+	<code># sudo nano /etc/default/grub</code>
+	<p>set grub timeout to 20 sec
+	<br>uncomment grub disable os prober = false
+	<br>write the changes and exit</p>
+	<code># sudo grub-mkconfig -o /boot/grub/grub.cfg</code>
+</body>
+</html>

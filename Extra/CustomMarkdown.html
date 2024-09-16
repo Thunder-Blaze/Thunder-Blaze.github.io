@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Custom Markdown</title>
+	<style type="text/css">
+		@font-face {
+			font-family: informe;
+			src: url("../Fonts/Informe.otf");
+		}
+		html {
+			font-size: 20px;
+			--accent: red;
+		}
+		body {
+			margin: 0;
+			padding: 50px;
+			padding-top: 100px;
+			box-sizing: border-box;
+			font-family: Jost;
+			background: #DDDDFF;
+			color: #112;
+		}
+		header {
+			position: fixed;
+			height: 60px;
+			width: 100%;
+			top: 0;
+			left: 0;
+			background: #FFF;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0px 0px 8px #0003;
+			z-index: 99999;
+		}
+		header img {
+			height: 80%;
+		}
+		h1,h2,h3,h4,h5,h6,p,code {
+			margin: 0;
+			margin-bottom: 20px;
+		}
+		h1 {font-weight: 600; position: relative; width: max-content; margin-bottom: 30px; padding-bottom: 10px}
+		h1:after {content: ''; left: 0; bottom: 0; width: 100%; height: 3px; position: absolute; background: var(--accent); border-radius: 2px}
+		h2 {font-weight: 500}
+		a {
+			text-decoration: none;
+			color: var(--accent);
+			padding: 2px 6px;
+			position: relative;
+		}
+		a:after {content: ''; left: 0; bottom: 0; width: 100%; height: 2px; position: absolute; background: var(--accent); border-radius: 8px; transition: all 0.3s ease; z-index: -1;}
+		a:hover:after {height: 100%;}
+		a:hover {color: #FFF}
+		code {
+			width: max-content;
+			background: #112;
+			color: #DDF;
+			padding: 18px 30px;
+			margin-bottom: 20px;
+			font-size: 16px;
+			position: relative;
+			display: flex;
+			border-radius: 10px;
+			font-family: informe;
+		}
+	</style>
+</head>
+<body>
+	<header><img src="https://git-scm.com/images/logo@2x.png"></header>
+	<h1>Git Setup (Basic)</h1>
+	<p>First of all download the suitable version of git from <a target="_blank" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>
+	<br>Follow the instructions on the site and finish installing git</p>
+	<h2>Filling Credentials</h2>
+	<p>On Windows search and open the application called "Git Bash"
+	<br>On linux, just open the terminal you use
+	<br>Now write the following commands, you can keep the username anything you like but remember to set the email to the one you used to create your github account</p>
+	<code>$ git config --global user.name "John Doe"</code>
+	<code>$ git config --global user.email johndoe@example.com</code>
+	<h2>Time to Change your Editor</h2>
+	<code>$ git config --global core.editor code</code>
+	<p>or</p>
+	<code>$ git config --global core.editor "/path/to/editor.exe"</code>
+	<h2>Changing your Default Branch Name (Optional)</h2>
+	<code>$ git config --global init.defaultBranch main</code>
+	<h2>Initializing a Repository</h2>
+	<p>Create a New folder or Open an existing folder where you want to create your repository <br>
+	Right click the empty space in folder to open the context menu and select "Git Bash Here" for windows and "Open Terminal in this Folder" in Linux <br>
+	Now type the following in the Terminal
+	</p>
+	<code>$ git init</code>
+	<p>This will Initialize the repository for use</p>
+	<h2>Creating and Adding Files</h2>
+	<p>You can create files the normal way (right click > new > text document) and then later renaming it as index.html, create another file named readme.md, these files we created are untracked right now, we will have to add them to the staging area in order to proceed further.<br>
+	open the git bash again and type</p>
+	<code>$ git add index.html<br><br>$ git add readme.md</code>
+	<p>or</p>
+	<code>$ git add -A</code>
+	<p>The former command adds files one by one to the staging area whereas the latter command adds all the files in the folder to staging area at once</p>
+	<h2>Commiting Changes</h2>
+	<p>Commiting changes means we are finalizing the files for uploading (for now). Only the staged files are committed. To commit changes in a easier way type</p>
+	<code>$ git commit -m "Any Commit Message"</code>
+	<h2>Adding URL</h2>
+	<code>$ git remote add origin url_here</code>
+	<h2>Pulling a Repository</h2>
+	<code>$ git pull origin main/master</code>
+	<h2>Pushing a Repository</h2>
+	<code>$ git push -u origin main/master</code>
+	<p>The below graph will give you a Basic Idea of adding/staging/commiting files<br><br>
+	<img width="100%" src="https://git-scm.com/book/en/v2/images/lifecycle.png"><p>
+</body>
+</html>

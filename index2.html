@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ThunderBlaze</title>
+	<link rel="stylesheet" href="./CSS/Fonts.css">
+	<style type="text/css">
+		:root {
+			--body-bg: 10, 8, 19;
+			--text: 213, 213, 223;
+			--text-muted: 134, 134, 150;
+			--nav-bg: 34, 34, 34;
+			--nav-color: 255, 255, 255;
+			--footer-bg: 19, 16, 38;
+			--pri1: 255, 0, 0;
+			--pri2: 0, 255, 255;
+			--acca: 137, 0, 255;
+			--accd: 100, 0, 255;
+			--accm: 100, 79, 163;
+			--accl: 156, 143, 243;
+			--heart: 204, 146, 180;
+			--failiure: 193, 31, 67;
+			--success: 10, 254, 209;
+		}
+		.button-type-4 {
+			background: rgba(var(--nav-color), 0.87);
+			outline: 4px solid rgba(var(--nav-color), 0.25);
+			color: rgb(var(--nav-bg));
+			padding: 8px 14px 7px 14px;
+			font-weight: 600;
+			position: relative;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.button-type-4::after {
+			content: '';
+			position: absolute;
+			top: -2px;
+			left: -2px;
+			width: calc(100% + 4px);
+			height: calc(100% + 4px);
+			filter: blur(5px);
+			background: rgb(var(--acca));
+		/*	background: #FFF;*/
+		    transition: all 0.3s ease-in-out;
+		/*    transition: all 0.3s cubic-bezier(.19,.51,.83,.54);*/
+			z-index: -1;
+		}
+
+
+
+		body{
+			margin: 0;
+			padding: 0;
+/*			background: #040a0b;
+			background: #212325;*/
+			background: rgb(var(--body-bg));
+			color: rgb(var(--text));
+			font-size: 16px;
+		    font-family: Verlag A,Verlag B,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+/*		    transform: scale(.8);*/
+/*		    opacity: 0;*/
+/*		    transition: transform .5s,opacity .3s;*/
+			letter-spacing: 1px;
+			word-spacing: 2px;
+		}
+		html, body {
+			scrollbar-width: none;
+		}
+		* {
+		    -webkit-font-smoothing: antialiased;
+		    text-rendering: optimizeLegibility;
+		    box-sizing: border-box;
+		    text-decoration: none;
+		}
+		.Header_Blur, .Header_BlurBorder {
+		    position: fixed;
+		    left: 0;
+		    z-index: 10;
+		    width: 100vw;
+		    height: 54px;
+		    content: "";
+/*		    pointer-events: none;*/
+		}
+		.Header_Blur {
+		    top: 0;
+/*		    background: #222;*/
+		    -webkit-backdrop-filter: blur(16px) saturate(1.8);
+		    backdrop-filter: blur(16px) saturate(1.8);
+		    -webkit-mask-image: linear-gradient(#000 60px,transparent 0);
+		    mask-image: linear-gradient(#000 60px,transparent 0);
+		}
+		.Header_BlurBorder {
+		    top: 52px;
+		    -webkit-backdrop-filter: blur(16px) saturate(5.2);
+		    backdrop-filter: blur(16px) saturate(5.2);
+		    -webkit-mask-image: linear-gradient(#000 2px,transparent 0);
+		    mask-image: linear-gradient(#000 2px,transparent 0);
+		}
+		#Header-nav {
+			background: rgba(var(--nav-bg), 0.47);
+			backdrop-filter: blur(18px) saturate(5.2);
+/*			filter: blur(18px) saturate(1.2);*/
+		    letter-spacing: 2.5px;
+		    text-transform: uppercase;
+			position: fixed;
+			display: flex;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 0 100px 0 100px;
+			height: 60px;
+			z-index: 100000;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+		#Header-nav .Header_Logo img {
+			height: 46px;
+		}
+		#Header-nav .Header_LinkCont {
+			display: flex;
+			flex-direction: row;
+		}
+		#Header-nav .Header_LinkCont .Header_Links {
+/*		    display: flex;*/
+		    display: block;
+		    position: relative;
+		    margin: 17px 21px 17px 21px;
+/*		    margin-bottom: 0.5em;*/
+		    color: rgb(var(--nav-color));
+		    font-weight: 700;
+		    font-size: 14px;
+		    transition: all 0.3s ease;
+		}
+		#Header-nav .Header_LinkCont .Header_Links::after {
+			content: '';
+			position: absolute;
+			top: -2px;
+			left: -2px;
+			width: calc(100% + 4px);
+			height: calc(100% + 4px);
+			filter: blur(5px);
+			opacity: 0;
+			background-image: linear-gradient(45deg,rgb(var(--pri1)), rgb(var(--pri2)));
+			z-index: -1;
+		    transition: all 0.3s ease-in-out;
+		}
+		#Header-nav .Header_LinkCont .Header_Links:hover {
+			background: rgba(var(--nav-color), 0.87);
+			outline: 4px solid rgba(var(--nav-color), 0.25);
+			color: rgb(var(--nav-bg));
+			padding: 8px 14px 7px 14px;
+			border-radius: 10px;
+		}
+		#Header-nav .Header_LinkCont .Header_Links:hover::after {
+			opacity: 1;
+		}
+		#Header-nav .Header_UserSign {
+			display: flex;
+			gap: 24px;
+		}
+		#Header-nav .Header_UserSign .SignUp{
+			padding: 8px 10px 7px 10px;
+			background: rgb(var(--nav-color));
+			border-radius: 10px;
+			color: rgb(var(--nav-bg));
+			font-size: 14px;
+			font-weight: 600;
+		}
+		#Header-nav .Header_UserSign .Login{
+			padding: 8px 10px 8px 10px;
+			color: rgb(var(--nav-color));
+			font-size: 14px;
+		}
+
+
+
+		#Footer {
+			width: calc(100% - 60px);
+			margin: auto;
+			padding: 30px;
+			position: relative;
+			display: grid;
+			grid-auto-columns: 450px auto;
+			border-radius: 30px;
+/*			justify-content: center;*/
+/*			background: linear-gradient(45deg,#0CF,#D06);*/
+			align-items: center;
+			background: rgb(var(--footer-bg));
+			height: 500px;
+			margin: 30px;
+			justify-items: center;
+/*			overflow: hidden;*/
+		}
+		@keyframes animate_footer_bg {
+			0% {
+				left: 0;
+			}
+			49.99% {
+				left: -300%;
+			}
+			50% {
+				left: 0;
+			}
+			99.99% {
+				left: -300%;
+			}
+			100% {
+				left: 0;
+			}
+		}
+/*		#Footer .Footer_animated_bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 400%;
+			height: 100%;
+			animation: animate_footer_bg 30s linear infinite;
+			z-index: -2;
+			background: linear-gradient(45deg, #F00, #fc00ff, #0FF, #fc00ff, #F00, #fc00ff, #0FF);
+		}
+		#Footer .blur_overlay_250 {
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			backdrop-filter: blur(200px);
+			border: 8px solid #FFF7;
+			border-radius: 30px;
+		}*/
+		#Footer .Footer-bgcircle {
+			height: 80%;
+			position: absolute;
+			z-index: -1;
+		}
+		#Footer .Footer-bgcircle.circle-blue {
+			fill: rgb(var(--pri2));
+			left: -50px;
+			top: 50px;
+		}
+		#Footer .Footer-bgcircle.circle-red {
+			fill: rgb(var(--pri1));
+			right: -100px;
+			top: 300px;
+		}
+		#Footer .Footer_blob {
+			position: absolute;
+			right: 30px;
+			z-index: 1;
+			width: 400px;
+			height: 400px;
+		}
+		#Footer .Footer_img {
+/*			width: 100%;*/
+			left: 50px;
+			position: absolute;
+			bottom: 0;
+			height: 550px;
+		}
+		#Footer .Footer_links {
+/*			left: ;*/
+			grid-column-start: 2;
+			display: grid;
+			grid-auto-columns: 50% 50%;
+			grid-auto-rows: auto auto 100px;
+			width: 100%;
+			height: 100%;
+		}
+		#Footer .Footer_links .subscribe {
+			grid-column: span 2;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+		}
+		#Footer .Footer_links .subscribe input[name="subscribe"] {
+			all: unset;
+			padding:  18px 16px;
+			background: rgb(var(--body-bg));
+			padding-right: 166px;
+			width: 450px;
+			border-radius: 16px;
+			outline: none !important;
+			color: var(--nav-color);
+/*			border: none !important;*/
+    		border: 2px solid rgb(var(--text-muted)) !important;
+    		transition: all 0.3s ease;
+		}
+		#Footer .Footer_links .subscribe input[name="subscribe"]:active, #Footer .Footer_links .subscribe input[name="subscribe"]:focus {
+/*			border-color: #2D1CC5 !important;*/
+/*			background: #090627;*/
+		}
+		#Footer .Footer_links .subscribe input[name="subscribe"]::placeholder {
+			color: rgb(var(--text-muted));
+/*			opacity: 1;*/
+		}
+		#Footer .Footer_links .subscribe .submit-btn {
+			position: absolute;
+			font: inherit !important;
+			border-radius: 6px;
+			background: #2D1CC5;
+			background: rgb(var(--accd));
+			letter-spacing: 1px;
+			color: #FFF;
+			cursor: pointer;
+			border: none !important;
+			outline: none !important;
+			padding: 8px 14px;
+/*			all: unset;*/
+/*			cursor: pointer;*/
+/*			right: calc(0);*/
+			right: calc(50% - 305px);
+/*			margin-left: calc(50%);*/
+		}
+		#Footer .Footer_links .link_groups{
+			display: flex;
+			flex-direction: column;
+		}
+		#Footer .Footer_links .link_title{
+			padding: 16px 0 16px 0;
+			font-weight: 600;
+		}
+		#Footer .Footer_links .links{
+			padding: 2px 16px;
+			color: rgb(var(--text-muted)); 
+		}
+		#Footer .Footer_links .bottom_section {
+			grid-column: span 2;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+		}
+		#Footer .Footer_links .bottom_section .seperator {
+			width: 100%;
+			height: 2px;
+			background: #FFF4;
+			background: #6400FF;
+			box-shadow: 0px 0px 8px #6400FF;
+			border-radius: 5px;
+		}
+		#Footer .Footer_links .bottom_section .social{
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+		}
+		#Footer .Footer_links .bottom_section .social .social_cont {
+			align-self: flex-end;
+		}
+		#Footer .Footer_links .bottom_section .social .social_cont img{
+			width: 24px;
+			height: 24px;
+			margin-left: 20px;
+/*			filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(206deg) brightness(108%) contrast(110%);*/
+		}
+	</style>
+</head>
+<body>
+	<!-- <div><div class="Header_Blur"></div><div class="Header_BlurBorder"></div></div> -->
+	<header id="Header-nav" class="header-nav">
+		<div class="Header_Logo">
+			<img src="https://s3.amazonaws.com/tasmeemme.project.mi.thumbnails/resize_805x9000/597/442597.png" alt="Logo">
+		</div>
+		<div class="Header_LinkCont">
+			<a href="#" class="Header_Links">Home</a>
+			<a href="#" class="Header_Links">Contact</a>
+			<a href="#" class="Header_Links">Projects</a>
+			<a href="#" class="Header_Links">About</a>
+		</div>
+		<div class="Header_UserSign">
+			<a href="#" class="SignUp button-type-4">Sign Up</a>
+			<a href="#" class="Login">Login</a>
+		</div>
+	</header>
+	<!-- <img src="https://shadow-garden.jp/assets/img/common/visual2.jpg" width="100%"> -->
+	<img src="./Assets/bg.png" width="100%">
+	<svg width="459.6" height="124.81213523688913" viewBox="0 0 369.65517241379314 100.38609958730618" class="looka-1j8o68f"><defs id="SvgjsDefs1892"></defs><g id="SvgjsG1893" featurekey="HdFLvg-0" transform="matrix(1.2013942554932677,0,0,1.2013942554932677,-27.443449473191897,-9.611154043946142)" fill="#a5ecd7"><g xmlns="http://www.w3.org/2000/svg"><polygon fill="#00CCFF" points="34.279,91.558 46.355,58.155 22.843,52.056 65.098,8 49.561,41.696 73.072,47.796  "></polygon></g></g></svg>
+	<footer id="Footer" class="Footer">
+		<img src="./Assets/footer_img.png" alt="Anime-Miku" class="Footer_img">
+		<!-- <div class="Footer_img"></div> -->
+		<div class="Footer_links">
+			<form class="subscribe">
+				<input type="text" name="subscribe" placeholder="Your E-mail !">
+				<button class="submit-btn">Subscribe Now</button>
+			</form>
+			<div class="link_groups">
+				<span class="link_title">Follow Us</span>
+				<span class="links">WhatsApp</span>
+				<span class="links">Instagram</span>
+				<span class="links">Facebook</span>
+			</div>
+			<div class="link_groups">
+				<span class="link_title">Anime Name</span>
+				<span class="links">Horimiya</span>
+				<span class="links">Frieren: The Slayer</span>
+				<span class="links">Bleach</span>
+			</div>
+			<div class="bottom_section">
+				<div class="seperator"></div>
+				<div class="social">
+					<span>All Rights Reserved - 2023</span>
+					<div class="social_cont">
+						<img src="./Assets/discord.svg" alt="" class="icon">
+						<img src="./Assets/github.svg" alt="" class="icon">
+						<img src="./Assets/anilist.svg" alt="" class="icon">
+						<img src="./Assets/spotify.svg" alt="" class="icon">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="blur_overlay_250"></div> -->
+		<!-- <div class="Footer_animated_bg"></div> -->
+		<!-- <div class="Contact-Us"></div> -->
+		<!-- <svg class="Footer-bgcircle circle-blue" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+		  <circle cx="50" cy="50" r="50" />
+		</svg>
+		<svg class="Footer-bgcircle circle-red" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+		  <circle cx="50" cy="50" r="50" />
+		</svg>
+		<svg class="Footer_blob" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="fill" x1="0%" y1="0%" x2="100%" y2="0%" gradientTransform="rotate(17 0.5 0.5)"><stop offset="0%" stop-color="#47d2e6"></stop><stop offset="100%" stop-color="#ff3f83"></stop></linearGradient></defs><path d="M84.5,65Q74,80,57,88Q40,96,30,80Q20,64,15.5,47.5Q11,31,27,24.5Q43,18,60,17Q77,16,86,33Q95,50,84.5,65Z" stroke="none" stroke-width="0" fill="url(#fill)"></path></svg> -->
+	</footer>
+</body>
+</html>

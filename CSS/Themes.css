@@ -1,0 +1,77 @@
+{
+  Themes
+
+/* Theme Green */
+--text: #eee3fc;
+--background: #0b0217;
+--primary: #a4ec46;
+--secondary: #1b0637;
+--accent: #92e821;
+
+/* Theme Pink */
+--text: #ffffff;
+--background: #1b091b;
+--primary: #ac37ae;
+--secondary: #130613;
+--accent: #ac37ae;
+
+
+--text: #fafed2;
+--background: #090a00;
+--primary: #00cCff;
+--secondary: #242424;
+--accent: #d8003d;
+
+
+--text: #fbdfdb;
+--background: #000000;
+--primary: #13889a;
+--secondary: #07031b;
+--accent: #1ab8d1;
+
+--text: #edf5fd;
+--background: #01011e;
+--primary: #3c0ff0;
+--secondary: #000033;
+--accent: #AD6CB5;
+
+--text: #f8dee8;
+--background: #15050b;
+--primary: #e58aae;
+--secondary: #320b1b;
+--accent: #d33675;
+
+--text: #f9ecf0;
+--background: #1f0a11;
+--primary: #b63a63;
+--secondary: #37101d;
+--accent: #c23d69;
+
+
+#purple
+--primary: #3C0FF0;
+--background: #06080A;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Rancho:700|Noto Sans SC:400'); body {font-family: 'Noto Sans SC'; font-weight: 400; } h1, h2, h3, h4, h5 {font-family: 'Rancho'; font-weight: 700; } html {font-size: 100%;} /* 16px */ h1 {font-size: 5.652rem; /* 90.4px */} h2 {font-size: 3.997rem; /* 64px */} h3 {font-size: 2.827rem; /* 45.28px */} h4 {font-size: 1.999rem; /* 32px */} h5 {font-size: 1.414rem; /* 22.56px */} small {font-size: 0.707rem; /* 11.36px */}
+
+
+/* line pop up transistion */
+transition: .4s cubic-bezier(.175,.885,.32,1.275).8s;
+
+
+:root[data-theme="light"] {
+  --text: #120c0d;
+  --background: #f4fafb;
+  --primary: #00ccff;
+  --secondary: #e4eaec;
+  --accent: #ff2965;
+}
+:root[data-theme="dark"] {
+  --text: #f3edee;
+  --background: #040a0b;
+  --primary: #00cCff;
+  --secondary: #13191b;
+  --accent: #d8003d;
+}
